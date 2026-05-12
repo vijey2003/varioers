@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en" class="h-full" data-theme="dark">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>VARIOERS - We For Victory</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+   :root {
+  --primary: #0A3D91;
+  --primary-light: #2563EB;
+  --primary-dark: #061F4A;
+  --neon-green: #38BDF8;
+  --neon-blue: #60A5FA;
+  --neon-yellow: #93C5FD;
+  --bg: #020817;
+  --bg-card: #0B1120;
+  --bg-glass: rgba(10, 25, 47, 0.75);
+  --text: #ffffff;
+  --text-muted: #94A3B8;
+  --surface: #111C34;
+}
+    [data-theme="light"] {
+      --bg: #f5f0f0;
+      --bg-card: #ffffff;
+      --bg-glass: rgba(255,255,255,0.7);
+      --text: #1a1a1a;
+      --text-muted: #555555;
+      --surface: #ece4e4;
+    }
+    html, body { height: 100%; }
+   body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background 0.25s, color 2s;
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(139,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-light), var(--neon-yellow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text); text-decoration: none; font-weight: 600;
+      font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
+      position: relative; transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--neon-green);
+      transition: width 0.3s; box-shadow: 0 0 8px var(--neon-green);
+    }
+    .nav-links a:hover { color: var(--neon-green); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .search-box {
+      display: flex; align-items: center;
+      background: var(--surface); border: 1px solid rgba(139,0,0,0.3);
+      border-radius: 25px; padding: 0.4rem 1rem; transition: border-color 0.3s;
+    }
+    .search-box:focus-within { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0,240,255,0.2); }
+    .search-box input {
+      background: transparent; border: none; outline: none;
+      color: var(--text); font-family: inherit; width: 120px; font-size: 0.85rem;
+    }
+    .search-box i { color: var(--text-muted); width: 16px; height: 16px; }
+    .theme-toggle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); border: 1px solid rgba(139,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s; color: var(--text);
+    }
+    .theme-toggle:hover { border-color: var(--neon-yellow); box-shadow: 0 0 12px rgba(255,230,0,0.3); }
+    /* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 2rem 4rem;
+  background-image: url('./images/baground.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-brand {
+      font-family: 'Poppins', sans-serif; font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900; letter-spacing: 8px;
+      background: linear-gradient(135deg, #fff, var(--primary-light), var(--neon-yellow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-shadow: none; margin-bottom: 1rem;
+      animation: heroGlow 3s ease-in-out infinite alternate;
+    }
+
+    .hero-cta {
+      display: inline-block; padding: 1rem 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; text-decoration: none; font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 3px; border-radius: 4px; border: 1px solid var(--primary-light);
+      position: relative; overflow: hidden; transition: all 0.4s;
+    }
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900; text-align: center; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text), var(--primary-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-subtitle {
+      text-align: center; color: var(--text-muted); font-size: 1rem;
+      margin-bottom: 3rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* FILTERS */
+    .filters {
+      display: flex; flex-wrap: wrap; gap: 0.8rem;
+      justify-content: center; margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.5rem; border-radius: 25px;
+      background: var(--surface); border: 1px solid rgba(139,0,0,0.3);
+      color: var(--text); font-family: inherit; font-weight: 600;
+      font-size: 0.85rem; cursor: pointer; transition: all 0.3s;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary); border-color: var(--primary-light);
+      color: #fff; box-shadow: 0 0 15px rgba(139,0,0,0.4);
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--bg-card); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(139,0,0,0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+    .product-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(57,255,20,0.05), rgba(0,240,255,0.05));
+      opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 1;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(139,0,0,0.2);
+      border-color: var(--primary-light);
+    }
+    .product-card:hover::before { opacity: 1; }
+
+    .product-img {
+      width: 100%; height: 280px; object-fit: cover;
+      background: linear-gradient(135deg, var(--surface), var(--primary-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Orbitron', sans-serif; color: var(--text-muted); font-size: 0.8rem;
+      transition: transform 0.5s;
+    }
+    .product-card:hover .product-img { transform: scale(1.05); }
+
+    .product-info { padding: 1.5rem; position: relative; z-index: 2; }
+    .product-category {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--neon-green); font-weight: 600; margin-bottom: 0.3rem;
+    }
+    .product-name {
+      font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .product-price {
+      font-size: 1.3rem; font-weight: 700; color: var(--primary-light);
+    }
+    .product-price span { font-size: 0.85rem; color: var(--text-muted); text-decoration: line-through; margin-left: 0.5rem; }
+
+    /* ABOUT */
+    .about-content {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+   .about-visual{
+    width: 100%;
+    max-width: 420px;
+    height: 420px;
+
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+
+    border: 1px solid rgba(255,215,0,0.2);
+
+    box-shadow:
+    0 0 20px rgba(255,215,0,0.12),
+    0 0 40px rgba(255,215,0,0.08);
+
+    margin: auto;
+        }
+
+.about-visual img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-form input, .contact-form textarea {
+      padding: 1rem 1.5rem; background: var(--surface);
+      border: 1px solid rgba(139,0,0,0.2); border-radius: 8px;
+      color: var(--text); font-family: inherit; font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s; outline: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,240,255,0.15);
+    }
+    .contact-form textarea { min-height: 150px; resize: vertical; }
+    .contact-form label { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+    .submit-btn {
+      padding: 1rem 2rem; background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; border: none; border-radius: 8px; font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; cursor: pointer; transition: all 0.3s;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139,0,0,0.4); }
+
+    .contact-info { display: flex; flex-direction: column; gap: 2rem; justify-content: center; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; }
+    .contact-icon {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--surface); border: 1px solid rgba(139,0,0,0.3);
+      display: flex; align-items: center; justify-content: center; color: var(--neon-green);
+    }
+    .social-links { display: flex; gap: 1rem; margin-top: 2rem; }
+    .social-links a {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--surface); border: 1px solid rgba(139,0,0,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); transition: all 0.3s; text-decoration: none;
+    }
+    .social-links a:hover { border-color: var(--neon-blue); color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,240,255,0.3); }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      border-top: 1px solid rgba(139,0,0,0.2);
+      background: var(--surface);
+    }
+    .footer-logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-light); }
+    .footer-slogan { color: var(--text-muted); margin-top: 0.5rem; letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; }
+    .footer-copy { color: var(--text-muted); margin-top: 1.5rem; font-size: 0.8rem; }
+
+    /* WHATSAPP BUTTON */
+    .whatsapp-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+      width: 60px; height: 60px; border-radius: 10%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgb(255, 4, 4), 0 0 20px rgba(57,255,20,0.2);
+      transition: all 0.3s; animation: whatsappPulse 2s infinite;
+      text-decoration: none; border: 2px solid var(--neon-green);
+    }
+    .whatsapp-float:hover { transform: scale(1.5); box-shadow: 0 6px 30px rgba(139,0,0,0.7), 0 0 30px rgba(57,255,20,0.4); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+    @keyframes whatsappPulse { 0%, 100% { box-shadow: 0 4px 20px rgba(139,0,0,0.5), 0 0 20px rgba(57,255,20,0.2); } 50% { box-shadow: 0 4px 30px rgba(139,0,0,0.7), 0 0 35px rgba(57,255,20,0.4); } }
+
+    /* MOBILE NAV */
+    .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
+    
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--bg-glass); backdrop-filter: blur(20px); padding: 2rem; gap: 1.5rem; border-bottom: 1px solid rgba(139,0,0,0.3); }
+      .nav-links.open { display: flex; }
+      .mobile-menu-btn { display: block; }
+      .search-box { display: none; }
+      .about-content, .contact-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    }
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px){
+
+    .hero{
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        padding: 2rem;
+    }
+
+    .hero-content{
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-title{
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle{
+        font-size: 1rem;
+    }
+
+    .about-content{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-visual{
+        width: 100%;
+        max-width: 100%;
+        height: 300px;
+    }
+    .about-text{
+        text-align: center;
+    }
+    .product-grid{
+        grid-template-columns: 1fr;
+    }
+    nav{
+        padding: 1rem;
+    }
+    .nav-links{
+        display: none;
+    }
+    section{
+        padding: 4rem 1.5rem;
+    }
+    .section-title{
+        font-size: 2rem;
+    }
+}
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+   <a href="#" class="nav-logo">VARIOERS</a> <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"> <i data-lucide="menu"></i> </button>
+   <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+   </ul>
+   <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"> <i data-lucide="sun"></i> </button>
+   </div>
+  </nav><!-- HERO -->
+  </nav>
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-LOGO">
+      <img src="images/LOGO.png" alt="VARIOERS Logo">
+    </div>
+    <a href="#collection" class="hero-cta" id="heroCta">
+      Explore Collection
+    </a>
+  </div>
+</header>
+  </header><!-- COLLECTION -->
+  <section id="collection">
+   <h2 class="section-title reveal">Our Collection</h2>
+   <p class="section-subtitle reveal">Premium Athletic Apparel</p>
+   <div class="filters reveal">
+    <button class="filter-btn active" data-filter="all">All</button> <button class="filter-btn" data-filter="uniform">uniform</button> <button class="filter-btn" data-filter="sportswear">Sportswear</button> 
+   </div>
+   <div class="product-grid" id="productGrid"></div>
+  </section><!-- ABOUT -->
+<section id="about">
+   <h2 class="section-title reveal">About VARIOERS</h2>
+   <p class="section-subtitle reveal">Born to Conquer</p>
+   <div class="about-content reveal">
+      <div class="about-text">
+         <p id="aboutText">
+            VARIOERS is more than sportswear — it's a mindset. Born from the spirit of relentless athletes who never settle for second place, every stitch carries the DNA of champions.
+         </p>
+         <p>
+            We engineer performance apparel that pushes boundaries. From the gym floor to the finish line, VARIOERS moves with you — fueling your pursuit of victory with cutting-edge fabric technology and fearless design.
+         </p>
+      </div>
+      <div class="about-visual">
+         <img src="images/about.jpeg" alt="VARIOERS Athlete">
+      </div>
+   </div>
+</section>
+   </div>
+  </section><!-- CONTACT -->
+  <section id="contact">
+   <h2 class="section-title reveal">Get In Touch</h2>
+   <p class="section-subtitle reveal">We'd Love to Hear From You</p>
+   <div class="contact-grid reveal">
+    <form class="contact-form" onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').style.display='block'; setTimeout(()=>document.getElementById('formMsg').style.display='none', 3000);">
+     <label for="name">Name</label> <input type="text" id="name" placeholder="Your Name" required> <label for="email">Email</label> <input type="email" id="email" placeholder="your@email.com" required> <label for="message">Message</label> <textarea id="message" placeholder="Your message..." required></textarea> <button type="submit" class="submit-btn">Send Message</button>
+     <p id="formMsg" style="display:none; color:var(--neon-green); font-weight:600;">Message sent successfully!</p>
+    </form>
+    <div class="contact-info">
+     <div class="contact-item">
+      <div class="contact-icon"><i data-lucide="mail"></i>
+      </div>
+      <div><strong>Email</strong><br><span style="color:var(--text-muted)">varioersclothing@gmail.com</span>
+      </div>
+     </div>
+     <div class="contact-item">
+      <div class="contact-icon"><i data-lucide="phone"></i>
+      </div>
+      <div><strong>Phone</strong><br><span style="color:var(--text-muted)"> +91 90694 74777</span>
+      </div>
+     </div>
+     <div class="contact-item">
+      <div class="contact-icon"><i data-lucide="map-pin"></i>
+      </div>
+      <div><strong>Location</strong><br><span style="color:var(--text-muted)">Perundurai, Erode </span>
+      </div>
+     </div>
+<div class="social-links">
+  <a href="https://instagram.com/house_of_varioers" target="_blank" aria-label="Instagram">
+    <i data-lucide="instagram"></i>
+  </a>
+  <a href="https://x.com/" target="_blank" aria-label="Twitter">
+    <i data-lucide="twitter"></i>
+  </a>
+  <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
+    <i data-lucide="facebook"></i>
+  </a>
+  <a href="https://youtube.com/" target="_blank" aria-label="Youtube">
+    <i data-lucide="youtube"></i>
+  </a>
+</div>
+    </div>
+   </div>
+  </section><!-- FOOTER -->
+  <footer>
+   <div class="footer-logo">
+    VARIOERS
+   </div>
+   <div class="footer-slogan">
+    We For Victory
+   </div>
+   <div class="footer-copy">
+    © 2026 VARIOERS. All Rights Reserved.
+   </div>
+  </footer><!-- WHATSAPP FLOAT --> <a href="https://wa.me/919069474777" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="whatsappBtn" aria-label="Chat on WhatsApp">
+   <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+   </svg></a>
+  <script>
+    // Products data
+const products = [
+  { name: "Red and black ", price: 89, oldPrice: 120, category: "sportswear", img: "images/product1.jpg" },
+  { name: "RCB Customized ", price: 129, oldPrice: null, category: "sportswear", img: "images/product2.jpg" },
+  { name: "Yellow B&W ", price: 69, oldPrice: 95, category: "sportswear", img: "images/product3.jpg" },
+  { name: "White with dotted ", price: 189, oldPrice: 240, category: "sportswear", img: "images/product4.jpg" },
+  { name: "Red Dragon ", price: 79, oldPrice: null, category: "sportswear", img: "images/product5.jpg" },
+  { name: "Black and Blue ", price: 149, oldPrice: 180, category: "sportswear", img: "images/product6.jpg" },
+  { name: "Full handed printed", price: 95, oldPrice: 130, category: "sportswear", img: "images/product7.jpg" },
+  { name: "White and Blue ", price: 219, oldPrice: null, category: "sportswear", img: "images/product8.jpg" },
+  { name: "Black and Grey ", price: 75, oldPrice: 99, category: "sportswear", img: "images/product9.jpg" },
+  { name: "Sky blue ", price: 169, oldPrice: 210, category: "sportswear", img: "images/product10.jpg" },
+  { name: "Light green", price: 85, oldPrice: null, category: "sportswear", img: "images/product11.jpg" },
+  { name: "Red with yellow", price: 139, oldPrice: 170, category: "uniform", img: "images/product12.jpg" },
+  { name: "Light purple ", price: 82, oldPrice: 110, category: "uniform", img: "images/product13.jpg" },
+  { name: "Green with Black ", price: 99, oldPrice: 135, category: "uniform", img: "images/product14.jpg" },
+  { name: "Yellow with Red ", price: 76, oldPrice: 105, category: "uniform", img: "images/product15.jpg" },
+  { name: "Satin Green", price: 159, oldPrice: 200, category: "uniform", img: "images/product16.jpg" },
+  { name: "Light violet with Yellow ", price: 88, oldPrice: null, category: "uniform", img: "images/product17.jpg" },
+  { name: "Light Purple with White", price: 249, oldPrice: 320, category: "uniform", img: "images/product18.jpg" }
+];
+    let currentFilter = 'all';
+    let currentSort = null;
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      let filtered = currentFilter === 'all' ? [...products] : products.filter(p => p.category === currentFilter);
+      if (currentSort === 'low') filtered.sort((a, b) => a.price - b.price);
+      else if (currentSort === 'high') filtered.sort((a, b) => b.price - a.price);
+      grid.innerHTML = filtered.map((p, idx) => `
+        <div class="product-card">
+          <div class="product-img" style="background: linear-gradient(135deg, ${['#8B0000', '#2d0000', '#1a0000'][idx % 3]}, ${['#B22222', '#3d1010', '#2a1010'][idx % 3]}); position: relative; overflow: hidden;">
+<img 
+  src="${p.img}" 
+  alt="${p.name}" 
+  style="width: 100%; height: 100%; object-fit: cover;" 
+  loading="lazy"
+  onerror="this.src='images/product 1.jpg'"
+              ${p.name}
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">${p.category === 'uniform' ? 'uniform' : 'Sportswear'}</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-price" style="color: var(--neon-yellow); font-size: 1rem;">
+  Bulk Order Discounts Available
+</div></div>
+          </div>
+        </div>
+      `).join('');
+    }
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.filter) {
+          currentFilter = btn.dataset.filter;
+          document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        }
+        if (btn.dataset.sort) {
+          currentSort = btn.dataset.sort;
+          document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        }
+        renderProducts();
+      });
+    });
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.dataset.theme === 'dark';
+      html.dataset.theme = isDark ? 'light' : 'dark';
+    });
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Init
+    renderProducts();
+    lucide.createIcons();
+    // Element SDK
+    const defaultConfig = {
+      hero_slogan: 'We For Victory',
+      cta_text: 'Explore Collection',
+      about_text: 'VARIOERS is more than sportswear — it\'s a mindset. Born from the spirit of relentless athletes who never settle for second place, every stitch carries the DNA of champions.',
+      whatsapp_number: '919069474777',
+      background_color: '#0a0a0a',
+      surface_color: '#1a1a1a',
+      text_color: '#ffffff',
+      primary_color: '#8B0000',
+      accent_color: '#39FF14',
+      font_family: 'Rajdhani',
+      font_size: 16
+    };
+    function applyConfig(config) {
+      const slogan = document.getElementById('heroSlogan');
+      const cta = document.getElementById('heroCta');
+      const about = document.getElementById('aboutText');
+      const wa = document.getElementById('whatsappBtn');
+      if (slogan) slogan.textContent = config.hero_slogan || defaultConfig.hero_slogan;
+      if (cta) cta.textContent = config.cta_text || defaultConfig.cta_text;
+      if (about) about.textContent = config.about_text || defaultConfig.about_text;
+      if (wa) wa.href = `https://wa.me/919069474777`;
+      document.documentElement.style.setProperty('--primary', config.primary_color || defaultConfig.primary_color);
+      document.documentElement.style.setProperty('--neon-green', config.accent_color || defaultConfig.accent_color);
+      document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+      document.body.style.fontSize = `${config.font_size || defaultConfig.font_size}px`;
+    }
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => { applyConfig(config); },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+          { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } },
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['hero_slogan', config.hero_slogan || defaultConfig.hero_slogan],
+        ['cta_text', config.cta_text || defaultConfig.cta_text],
+        ['about_text', config.about_text || defaultConfig.about_text],
+        ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number],
+      ])
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fa02f54b5ddb2ac',t:'MTc3ODQ5MjAzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
