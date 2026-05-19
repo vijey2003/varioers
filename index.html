@@ -506,8 +506,8 @@ const products = [
    { name: "Yellow with navy", price: 249, oldPrice: 320, category: "sportswear", img: "images/product27.jpeg" },
    { name: "Purple and neon orange", price: 249, oldPrice: 320, category: "sportswear", img: "images/product29.jpeg" },
    { name: "Violet with navy", price: 249, oldPrice: 320, category: "sportswear", img: "images/product30.jpeg" },
-   { name: "Green and white", price: 249, oldPrice: 320, category: "sportswear", img: "images/product31.jpeg" },,
-   { name: "Blue with white", price: 249, oldPrice: 320, category: "sportswear", img: "images/product32.jpeg" }
+   { name: "Green and white", price: 249, oldPrice: 320, category: "sportswear", img: "images/product31.jpeg" },
+   { name: "Blue with white", price: 249, oldPrice: 320, category: "sportswear", img: "images/product32.jpeg" },
    { name: "Black with red and white", price: 249, oldPrice: 320, category: "sportswear", img: "images/product33.jpeg" },
 ];
     let currentFilter = 'all';
@@ -520,13 +520,15 @@ const products = [
       grid.innerHTML = filtered.map((p, idx) => `
         <div class="product-card">
           <div class="product-img" style="background: linear-gradient(135deg, ${['#8B0000', '#2d0000', '#1a0000'][idx % 3]}, ${['#B22222', '#3d1010', '#2a1010'][idx % 3]}); position: relative; overflow: hidden;">
-<img 
-  src="${p.img}" 
-  alt="${p.name}" 
-  style="width: 100%; height: 100%; object-fit: cover;" 
-  loading="lazy"
-  onerror="this.src='images/product 1.jpg'"
-              ${p.name}
+<img
+src="${p.img}"
+alt="${p.name}"
+style="width:100%; height:100%; object-fit:cover;"
+loading="lazy"
+onerror="this.src='images/product1.jpg'">
+              git add .
+git commit -m "fixed product image and product array errors"
+git push
             </div>
           </div>
           <div class="product-info">
